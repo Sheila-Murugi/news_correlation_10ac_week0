@@ -12,10 +12,18 @@ news_bodies = data['content'].tolist()
 # Combine headlines and news bodies
 text_data = [f"{headline} {news_body}" for headline, news_body in zip(headlines, news_bodies)]
 
+# Set the sample size
+sample_size = 100
+
+# Down-sample the data to a sample size of 100
+if len(text_data) > sample_size:
+    text_data = text_data[:sample_size]
+
 # Create TF-IDF vectorizer
 vectorizer = TfidfVectorizer()
 X = vectorizer.fit_transform(text_data)
-# Perform analysis
+
+## Perform analysis
 # For example, calculate the top N most important words using TF-IDF scores
 
 # Get the feature names (words) from the TF-IDF vectorizer
